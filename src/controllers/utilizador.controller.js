@@ -108,6 +108,7 @@ controllers.utilizador_delete = async (req, res) => {
 };
 
 
+//Login ---> Obrigado Rafael Henriques <3 <3 <3 //
 controllers.utilizador_login = async (req, res) => {
   const { username, password} = req.body;
   const credenciais = await utilizador.findOne({ where: {username:username} });
