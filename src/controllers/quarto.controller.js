@@ -4,9 +4,9 @@ const sequelize = require("../config/db");
 const controllers = {};
 sequelize.sync();
 
-//função do endpoint /alunos
+//função do endpoint /quarto
 controllers.quarto_list = async (req, res) => {
-  //opção 1) retorna todos os alunos incluindo as disciplinas e respetiva relação
+  //opção 1) retorna todos os quarto incluindo as disciplinas e respetiva relação
   const dados = await quarto.findAll()
     .then(function (dados) {
       return dados;
