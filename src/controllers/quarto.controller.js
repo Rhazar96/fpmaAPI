@@ -44,11 +44,12 @@ controllers.quarto_detail = async (req, res) => {
 };
 
 controllers.quarto_create = async (req, res) => {
-  const { tipo, status, data } = req.body;
+  const {id_quarto, tipo, status, data } = req.body;
   const dados = await quarto.create({
     tipo: tipo,
     status: status,
     data: data,
+    id_quarto: id_quarto,
   })
     .then(function (dados) {
       console.log(dados);

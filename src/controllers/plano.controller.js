@@ -44,8 +44,9 @@ controllers.plano_detail = async (req, res) => {
 };
 
 controllers.plano_create = async (req, res) => {
-  const { tipo_plano, data, preco_plano } = req.body;
+  const { id_plano, tipo_plano, data, preco_plano } = req.body;
   const dados = await plano.create({
+    id_plano: id_plano,
     tipo_plano: tipo_plano,
     data: data,
     preco_plano: preco_plano,

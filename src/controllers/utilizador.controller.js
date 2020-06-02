@@ -107,4 +107,17 @@ controllers.utilizador_delete = async (req, res) => {
   });
 };
 
+
+controllers.utilizador_login = async (req, res) => {
+  const { username, password} = req.body;
+  const credenciais = await utilizador.findOne({ where: {username:username} });
+  if(!credenciais){
+    return res.status(400).send({error:"Dados do utilizador não encontrados."});
+  }
+  if(password !== credenciais.password){
+    return res.status(400).send({error: "Password errada."});
+  }
+  res.json({success:true, credenciais:credenciais})
+};
+
 module.exports = controllers;

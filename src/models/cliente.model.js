@@ -15,5 +15,7 @@ var cliente = db.define('cliente', {
     tableName: 'cliente'
 });
 
-cliente.hasOne(reserva, {foreignKey: 'id_cliente'});
+cliente.hasMany(reserva, {foreignKey: 'id_cliente'});
+reserva.belongsTo(cliente, {foreignKey: 'id_cliente'});
+
 module.exports = cliente;

@@ -5,7 +5,7 @@ const router = express.Router();
 const clienteController = require('../controllers/cliente.controller');
 const planoController = require('../controllers/plano.controller');
 const quartoController = require('../controllers/quarto.controller');
-/*const clienteController = require('../controllers/reserva.controller');*/
+const reservaController = require('../controllers/reserva.controller');
 const utilizadorController = require('../controllers/utilizador.controller');
 
 
@@ -32,20 +32,21 @@ router.post('/quarto', quartoController.quarto_create);
 router.put('/quarto/:id', quartoController.quarto_update);
 router.delete('/quarto/:id', quartoController.quarto_delete);
 
- /*   //Reserva
+    //Reserva
 router.get('/reservas', reservaController.reserva_list);
 router.get('/reserva/:id', reservaController.reserva_detail);
 router.post('/reserva', reservaController.reserva_create);
 router.put('/reserva/:id', reservaController.reserva_update);
 router.delete('/reserva/:id', reservaController.reserva_delete);
 
- */   //Utilizador
+   //Utilizador
 router.get('/utilizadores', utilizadorController.utilizador_list);
 router.get('/utilizador/:id', utilizadorController.utilizador_detail);
 router.post('/utilizador', utilizadorController.utilizador_create);
 router.put('/utilizador/:id', utilizadorController.utilizador_update);
 router.delete('/utilizador/:id', utilizadorController.utilizador_delete);
 
-
+    //Login
+router.post('/login', utilizadorController.utilizador_login);
 
 module.exports = router;
