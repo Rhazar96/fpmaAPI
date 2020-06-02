@@ -6,7 +6,7 @@ var quarto = db.define('quarto', {
         type: sequelize.INTEGER, primaryKey: true, autoIncrement: true 
     },
     tipo: sequelize.STRING,
-    satus: sequelize.INTEGER,
+    status: sequelize.INTEGER,
     data: sequelize.DATE
 },
 {

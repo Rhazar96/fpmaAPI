@@ -4,8 +4,8 @@ const router = express.Router();
 //importar o controlador
 const clienteController = require('../controllers/cliente.controller');
 const planoController = require('../controllers/plano.controller');
-/*const clienteController = require('../controllers/quarto.controller');
-const clienteController = require('../controllers/reserva.controller');*/
+const quartoController = require('../controllers/quarto.controller');
+/*const clienteController = require('../controllers/reserva.controller');*/
 const utilizadorController = require('../controllers/utilizador.controller');
 
 
@@ -25,14 +25,14 @@ router.put('/plano/:id', planoController.plano_update);
 router.delete('/plano/:id', planoController.plano_delete);
 
 
- /*   //Quarto
+    //Quarto
 router.get('/quartos', quartoController.quarto_list);
 router.get('/quarto/:id', quartoController.quarto_detail);
 router.post('/quarto', quartoController.quarto_create);
 router.put('/quarto/:id', quartoController.quarto_update);
 router.delete('/quarto/:id', quartoController.quarto_delete);
 
-    //Reserva
+ /*   //Reserva
 router.get('/reservas', reservaController.reserva_list);
 router.get('/reserva/:id', reservaController.reserva_detail);
 router.post('/reserva', reservaController.reserva_create);
