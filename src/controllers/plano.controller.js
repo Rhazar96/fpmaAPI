@@ -33,7 +33,7 @@ controllers.plano_detail = async (req, res) => {
     })
     .catch((error) => {
       res.status(500).send({
-        message: error.message || "Ocorreu um erro ao carregar os dados do aluno.",
+        message: error.message || "Ocorreu um erro ao carregar os dados dos planos.",
       });
     });
 
@@ -44,12 +44,11 @@ controllers.plano_detail = async (req, res) => {
 };
 
 controllers.plano_create = async (req, res) => {
-  const { nome, email, data, telemovel } = req.body;
+  const { tipo_plano, data, preco_plano } = req.body;
   const dados = await plano.create({
-    nome: nome,
-    email: email,
+    tipo_plano: tipo_plano,
     data: data,
-    telemovel: telemovel,
+    preco_plano: preco_plano,
   })
     .then(function (dados) {
       console.log(dados);
@@ -57,7 +56,7 @@ controllers.plano_create = async (req, res) => {
     })
     .catch((error) => {
       res.status(500).send({
-        message: error.message || "Ocorreu um erro ao tentar criar o aluno.",
+        message: error.message || "Ocorreu um erro ao tentar criar o plano.",
       });
     });
 
@@ -69,13 +68,12 @@ controllers.plano_create = async (req, res) => {
 
 controllers.plano_update = async (req, res) => {
   const { id } = req.params;
-  const { nome, email, data, telemovel } = req.body;
+  const { tipo_plano, data, preco_plano } = req.body;
   const dados = await plano.update(
     {
-      nome: nome,
-      email: email,
+      tipo_plano: tipo_plano,
       data: data,
-      telemovel: telemovel,
+      preco_plano: preco_plano,
     },
     {
       where: { id_plano: id },
@@ -87,7 +85,7 @@ controllers.plano_update = async (req, res) => {
     })
     .catch((error) => {
       res.status(500).send({
-        message: error.message || "Ocorreu um erro ao tentar atualiza os dados do aluno.",
+        message: error.message || "Ocorreu um erro ao tentar atualizar o plano.",
       });
     });
 
@@ -101,7 +99,7 @@ controllers.plano_delete = async (req, res) => {
   const { id } = req.params;
   const dados = await plano.destroy({ where: { id_plano: id } }).catch((error) => {
     res.status(500).send({
-      message: error.message || "Ocorreu um erro ao tentar remover o aluno.",
+      message: error.message || "Ocorreu um erro ao tentar remover o plano.",
     });
   });
 
