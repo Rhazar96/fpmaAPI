@@ -1,19 +1,19 @@
-const cliente = require("../models/cliente.model");
+const plano = require("../models/plano.model");
 const sequelize = require("../config/db");
 
 const controllers = {};
 sequelize.sync();
 
 //função do endpoint /alunos
-controllers.cliente_list = async (req, res) => {
+controllers.plano_list = async (req, res) => {
   //opção 1) retorna todos os alunos incluindo as disciplinas e respetiva relação
-  const dados = await cliente.findAll() 
+  const dados = await plano.findAll() 
     .then(function (dados) {
       return dados;
     })
     .catch((error) => {
       res.status(500).send({
-        message: error.message || "Ocorreu um erro ao carregar os dados dos alunos.",
+        message: error.message || "Ocorreu um erro ao carregar os dados dos planos.",
       });
     });
     
@@ -25,9 +25,9 @@ controllers.cliente_list = async (req, res) => {
   });
 };
 
-controllers.cliente_detail = async (req, res) => {
+controllers.plano_detail = async (req, res) => {
   const { id } = req.params;
-  const dados = await cliente.findAll({ where: { id_cliente: id } })
+  const dados = await plano.findAll({ where: { id_plano: id } })
     .then(function (dados) {
       return dados;
     })
@@ -43,9 +43,9 @@ controllers.cliente_detail = async (req, res) => {
   });
 };
 
-controllers.cliente_create = async (req, res) => {
+controllers.plano_create = async (req, res) => {
   const { nome, email, data, telemovel } = req.body;
-  const dados = await cliente.create({
+  const dados = await plano.create({
     nome: nome,
     email: email,
     data: data,
@@ -67,10 +67,10 @@ controllers.cliente_create = async (req, res) => {
   });
 };
 
-controllers.cliente_update = async (req, res) => {
+controllers.plano_update = async (req, res) => {
   const { id } = req.params;
   const { nome, email, data, telemovel } = req.body;
-  const dados = await cliente.update(
+  const dados = await plano.update(
     {
       nome: nome,
       email: email,
@@ -78,7 +78,7 @@ controllers.cliente_update = async (req, res) => {
       telemovel: telemovel,
     },
     {
-      where: { id_cliente: id },
+      where: { id_plano: id },
     }
   )
     .then(function (dados) {
@@ -97,9 +97,9 @@ controllers.cliente_update = async (req, res) => {
   });
 };
 
-controllers.cliente_delete = async (req, res) => {
+controllers.plano_delete = async (req, res) => {
   const { id } = req.params;
-  const dados = await cliente.destroy({ where: { id_cliente: id } }).catch((error) => {
+  const dados = await plano.destroy({ where: { id_plano: id } }).catch((error) => {
     res.status(500).send({
       message: error.message || "Ocorreu um erro ao tentar remover o aluno.",
     });
