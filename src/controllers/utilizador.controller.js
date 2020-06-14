@@ -118,7 +118,7 @@ controllers.utilizador_login = async (req, res) => {
   if(password !== credenciais.password){
     return res.status(400).send({error: "Password errada."});
   }
-  res.json({success:true, credenciais:credenciais})
+  res.json({success:true, dados:credenciais})
 };
 
 module.exports = controllers;

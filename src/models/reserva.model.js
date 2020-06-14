@@ -9,7 +9,7 @@ var reserva = db.define('reserva', {
     },
     id_quarto: sequelize.INTEGER,
     id_plano: sequelize.INTEGER,
-    id_cliente: {type: sequelize.INTEGER, reference:{model: cliente, key: "id:cliente"}},
+    id_cliente: sequelize.INTEGER,
     data_checkin: sequelize.DATE,
     data_checkout: sequelize.DATE,
     observacoes: sequelize.STRING,
@@ -20,8 +20,9 @@ var reserva = db.define('reserva', {
     timestamps: false,
     tableName: 'reserva'
 });
-reserva.hasMany(quarto, {foreignKey:'id_quarto'});
-reserva.hasMany(plano, {foreignKey:'id_plano'});
-
+quarto.hasMany(reserva, {foreignKey: 'id_quarto'});
+reserva.belongsTo(quarto, {foreignKey: 'id_quarto'});
+plano.hasMany(reserva, {foreignKey: 'id_plano'});
+reserva.belongsTo(plano, {foreignKey: 'id_plano'});
 
 module.exports = reserva;
